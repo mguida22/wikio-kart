@@ -43,6 +43,8 @@ router.post('/game', (req, res) => {
   let id = req.body.userId;
   let history = req.body.history;
 
+  console.log(req.body);
+
   // save game data here
 
   res.status(200);
