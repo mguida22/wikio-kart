@@ -16,9 +16,7 @@ function startGame () {
 	data.start = new Date();												// get system time
 	URLCollection.length = 0;												// clear array
     console.log("Starting game");
-    startURL = "https://en.wikipedia.org/wiki/"+startPage;
-    console.log(startURL);
-	location.replace(startURL);							// Redirect to wikipage
+						// Redirect to wikipage
 }
 
 
@@ -53,14 +51,14 @@ function catchURL () {
 }
 
 
-// $(function() {						// Every page load
+$(function() {						// Every page load
 
-// 	catchURL();
-// 	if (window.location.href == "https://en.wikipedia.org/wiki/"+stopPage) {
-// 		stopGame();
-// 	}
+	catchURL();
+	if (window.location.href == "https://en.wikipedia.org/wiki/"+stopPage) {
+		stopGame();
+	}
 
-// });
+});
 
 // chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 // 	console.log("request!", request);

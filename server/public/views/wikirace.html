@@ -92,7 +92,11 @@
 				    console.log("button");
 				    var extensionID = "dookpljdhbelnhekoanbkgahcioialmn";
 
-					// Make a simple request:
+				    startURL = "https://en.wikipedia.org/wiki/New_Zealand";
+   					console.log(startURL);
+					location.replace(startURL);	
+
+					// Make the request
 					chrome.runtime.sendMessage(extensionID, {action: "startGame"},
 					  function(response) {
 					      console.log(response.farewell);
