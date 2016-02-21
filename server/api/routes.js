@@ -13,6 +13,7 @@ router.post('/user', (req, res) => {
   let timestamp = new Date();
   let id = md5(name + timestamp);
 
+  console.log(req.body);
   fs.readFile(path.join(__dirname, '../data/users.json'), (err, data) => {
     if (err) throw err;
 
