@@ -25,7 +25,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-       
+
         <style type="text/css">
 			body {
 				font-family: 'Open Sans', sans-serif;
@@ -106,38 +106,36 @@
 			    </div>
 			</section>
 		    <script>
-		    $(document).ready(function(){
-		    	$('#submit-button').click(function() {
-		    		var name = $('#name-input').val();
-		    		var data = {
-		    			name: name
-		    		};
+          $(document).ready(function(){
+            $('#submit-button').click(function() {
+              var name = $('#name-input').val();
+              var data = {
+                name: name
+              };
 
-	    			$.ajax({
-					    type: "POST",
-						url: '//localhost:3000',
-					    data: data,
-					    success: function() {
-					     	console.log('post success');
-					      	var extensionID = "dookpljdhbelnhekoanbkgahcioialmn";
+              $.ajax({
+                type: "POST",
+                url: '/api/user',
+                data: data,
+                success: function() {
+                  console.log('post success');
+                  var extensionID = "dookpljdhbelnhekoanbkgahcioialmn";
 
+                  startURL = "https://en.wikipedia.org/wiki/New_Zealand";
+                  location.replace(startURL);
 
-						    startURL = "https://en.wikipedia.org/wiki/New_Zealand";
-							location.replace(startURL);	
-
-							// Make the request
-							chrome.runtime.sendMessage(extensionID, {action: "startGame"},
-							  function(response) {
-							      console.log(response.farewell);
-		  					});
-					    },
-					    error: function() {
-					      console.log("post error")
-						}
-				  	});
-		    	});
-		    });
-
+                  // Make the request
+                  chrome.runtime.sendMessage(extensionID, {action: "startGame"},
+                  function(response) {
+                    console.log(response.farewell);
+                  });
+                },
+                error: function() {
+                  console.log("post error");
+                }
+              });
+            });
+          });
 			</script>
 
 		<button id="submit-button">Clicky.</button>>

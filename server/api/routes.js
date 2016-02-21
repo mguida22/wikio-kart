@@ -9,12 +9,15 @@ const router = express.Router();
 
 router.post('/user', (req, res) => {
   let name = req.body.name;
-  let character = req.body.characterId;
+  if (!name) {
+    res.status(400).json({ error: 'incomplete arguments' });
+    return;
+  }
+  // let character = req.body.characterId;
 
   let timestamp = new Date();
   let id = md5(name + timestamp);
 
-  console.log(req.body);
   fs.readFile(path.join(__dirname, '../data/users.json'), (err, data) => {
     if (err) throw err;
 
@@ -22,7 +25,7 @@ router.post('/user', (req, res) => {
 
     data[id] = {
       name: name,
-      characterId: character,
+      // characterId: character,
     };
 
     data = JSON.stringify(data);
@@ -39,6 +42,11 @@ router.post('/game', (req, res) => {
   let end = req.body.endTime;
   let id = req.body.userId;
   let history = req.body.history;
+
+  if (!start || !end || !id || !history) {
+    res.status(400).json({ error: 'incomplete arguments' });
+    return;
+  }
 
   let timestamp = new Date();
   let gameId = md5(id + timestamp);
