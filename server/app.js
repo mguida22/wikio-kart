@@ -27,6 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 let index = require('./routes/index');
 app.use('/', index);
 
+let score = require('./routes/score');
+app.use('/score', score);
+
 // api routes
 let api = require('./api/routes');
 app.use('/api', api);
