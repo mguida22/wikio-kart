@@ -10,7 +10,7 @@
 
   "content_scripts": [{
     "matches": ["*://*/*"],
-    "js": ["vendor/jquery-2.1.4.min.js","js/main.js"],
+    "js": ["vendor/jquery-2.1.4.min.js","js/main.js", "js/popup.js"],
     "css": ["css/main.css"]
   }],
 
@@ -21,6 +21,10 @@
 
   "permissions": [
     "activeTab",
-    "storage"
-  ]
+    "storage",
+    "webNavigation",
+    "tabs",
+    "http://*/*", 
+    "https://*/*"]
 }
+
