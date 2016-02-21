@@ -10,12 +10,12 @@
 
   "content_scripts": [{
     "matches": ["*://*/*"],
-    "js": ["vendor/jquery-2.1.4.min.js", "js/popup.js"],
+    "js": ["vendor/jquery-2.1.4.min.js", "js/content.js","js/popup.js"],
     "css": ["css/main.css"]
   }],
 
    "background": {
-    "scripts": ["js/main.js","vendor/jquery-2.1.4.min.js"],
+    "scripts": ["js/main.js"],
     "persistent": false
   },
 
@@ -25,7 +25,7 @@
   },
 
   "externally_connectable": {
-  "matches": ["https://7f9de9f1.ngrok.io/*"]
+  "matches": ["https://7d54ca6d.ngrok.io/*"]
   },
 
   "permissions": [
