@@ -1,5 +1,5 @@
 var startPage = "New_Zealand";
-var stopPage = "Donald_Trump";
+var stopPage = "Puppy";
 var URLCollection = [];
 
 
@@ -16,7 +16,7 @@ function startGame () {
 	data.start = Date.now()												// get system time
 	URLCollection.length = 0;												// clear array
     console.log("Starting game");
-						// Redirect to wikipage
+						
 }
 
 
