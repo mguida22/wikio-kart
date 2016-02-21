@@ -25,13 +25,13 @@ function stopGame () {
 	data.end = Date.now()	// get system time
 	console.log("Found it. bro.");
 	console.log(data.end);
-	alert("You found Donald Trump at this time:\n" + data.end);
+	alert("You found puppies at this time:\n" + data.end);
 
 	data.history = URLCollection;
 
 	$.ajax({
 	    type: "POST",
-		url: 'localhost:3000/api/game',
+		url: 'http://localhost:3000/api/game',
 	    data: data,
 	    success: function() {
 	      console.log('post success');
@@ -41,6 +41,9 @@ function stopGame () {
 		}
   	});
 
+	console.log(window.location.href);
+	window.location.href = "https://wikiokart.com";
+	console.log(window.location.href);
 
 }
 

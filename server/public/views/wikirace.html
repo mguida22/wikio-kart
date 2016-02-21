@@ -159,7 +159,7 @@
                   // Make the request
                   chrome.runtime.sendMessage(extensionID, {action: "startGame"},
                   function(response) {
-                    console.log(response.farewell);
+                    console.log(response);
                   });
                 },
                 error: function() {
@@ -168,6 +168,8 @@
               });
             });
           });
+
+
 		</script>
 
 		</main>

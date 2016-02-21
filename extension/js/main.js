@@ -12,7 +12,7 @@ chrome.runtime.onMessageExternal.addListener (
     	if(request.action == "startGame") {
     		setStartGame();
     		console.log("that actually worked!");
-            sendResponse({farewell: "goodbye"});
+            sendResponse({farewell: "loopback"});
     	}
   });
 
