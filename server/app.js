@@ -6,7 +6,6 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const exphbs  = require('express-handlebars');
 
 let app = express();
 
@@ -14,14 +13,6 @@ let app = express();
 let env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
-
-// view engine setup
-app.engine('handlebars', exphbs({
-  defaultLayout: 'main',
-  partialsDir: ['views/partials/']
-}));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'handlebars');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
@@ -51,25 +42,27 @@ app.all('*', (req, res) => {
 // will print stacktrace
 
 if (app.get('env') === 'development') {
-    app.use((err, req, res, next) => {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err,
-            title: 'error'
-        });
-    });
+  app.use((err, req, res, next) => {
+    let response = {
+      message: err.message,
+      error: err,
+      title: 'error'
+    };
+    res.status(err.status || 500);
+    res.json(response);
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-    });
+  let response = {
+    message: err.message,
+    error: {},
+    title: 'error'
+  };
+  res.status(err.status || 500);
+  res.json(response);
 });
 
 

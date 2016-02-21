@@ -1,12 +1,13 @@
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+const path = require('path');
+const express = require('express');
+const router = express.Router();
 
 /* GET home page. */
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'WikiRace' });
+  res.sendfile(path.join(__dirname, '../public/views/wikirace.html'));
 });
 
 module.exports = router;
