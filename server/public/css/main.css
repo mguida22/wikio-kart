@@ -92,33 +92,33 @@ body, html {
 	height: 100%;
 	min-height: 100%;
 	background-color: #000000;
+    font-family: sans-serif;
 }
-body {
-	
-}
-.no-js {
-	padding-top: 106px;
-}
+
 h2 {
 	margin-top: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 150%
 }
-.loading {
-	background: url('../img/ico_loading.gif') no-repeat center center;
-}
+
 section {
 	min-width: 960px;
 	opacity: 0;
 }
 .loaded section,
+
 .no-js section {
 	opacity: 1;
 	-webkit-transition: opacity 300ms ease-out;
 	-moz-transition: opacity 300ms ease-out;
 	transition: opacity 300ms ease-out;
 }
+
 main {
 	overflow-x: hidden;
 }
+
+
 #preload {
 	width: 1px;
 	height: 1px;
@@ -134,6 +134,7 @@ main {
 	background-size: cover;
 	height: 100%;
 	width: 100%;
+    z-index: 9000;
 }
 
 .hsContainer {
@@ -148,37 +149,73 @@ main {
 	position: absolute;
 	left: 50%;
 	top: 50%;
+    margin:0 auto;
 }
-	.hsContent h2  {
-		color: #fff8de;
-		background-color: rgba(0,0,0,0.5);
-		padding: 10px 5px;
-		font-size: 35px;
-		line-height: 38px;
-		margin-bottom: 12px;
+	/*.hsContent h2  {
+		/*color: #fff8de;*/
+		/*background-color: rgba(0,0,0,0.5);*/
+		/*padding: 10px 5px;*/
+		/*font-size: 35px;*/
+		/*line-height: 38px;*/
+		/*margin-bottom: 12px;*/
 	}
 	.hsContent p {
 		width: 400px;
-		color: #b2b2b2;
+		color: black;
 	}
 	.hsContent a {
-		color: #b2b2b2;
-		text-decoration: underline;
+		color: #ffffff;
+		text-decoration: none;
 	}
+.box{
+    border:1px solid rgba(0,0,0,0);
+    background-color: rgba(255, 148, 0, 0.5);
+    padding: 5px  1px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.box2{
+    border:1px solid rgba(255,255,255,1);
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px  1px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+.mousecar{
+    position: fixed;
+    top: 475px;
+    left:43%;
+    display: block;
+    z-index: 1;
+}
 
 /* Slide 1 */
 #slide-1 .bcg {background-image:url('../img/bcg_slide-1.jpg')}
 #slide-1 .hsContent {
-	bottom: 200px;
+	bottom: 250px;
 	top: auto;
+    left:470px;
+    font-family: Josephin Sans, sans-serif;
+    position: absolute;
+    display: block;
+    
 }
 
 /* Slide 2 */
-#slide-2 .bcg {background-color: black;}
+#slide-2 .bcg { background-image:url('../img/bcg_slide-2.jpg')}
 #slide-2 .hsContent {
 	margin-left: -450px;
-	bottom: 200px;
+	bottom: 300px;
 	top: auto;
+    color: #ffffff;
+    text-align: left;
+    display: block;
+    z-index: 9000;
 }
 
 /* Slide 3 */
@@ -194,36 +231,39 @@ main {
 /* Slide 4 */
 #slide-4 .bcg {background-color: blue}
 #slide-4 .hsContent {
-	margin-left: -450px;
+	margin-left: 250px;
+    z-index: auto;
+    color: #ffffff;
+    font-family: sans-serif;
+   
 }
 	#slide-4 h2 {
 		background: none;
 		padding-left: 0;
 		padding-right: 0;
+
 	}
+
+    
+#slide-5 .bcg {background-image:url('../img/bcg_slide-5.jpg')}
+#slide-5 .hsContent {
+    margin-left: -239px;
+}
+ 
+/* Slide 6 */
+#slide-6 .bcg {background-color: #39b54a}
+#slide-6 .hsContent {
+    margin-left: -239px;
+}
+    
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 
-/*
- * Image replacement
- */
 
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
-}
 
-.ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
-}
+
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
@@ -238,7 +278,7 @@ main {
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
 
-.visuallyhidden {
+/*.visuallyhidden {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -247,7 +287,7 @@ main {
     padding: 0;
     position: absolute;
     width: 1px;
-}
+}*/
 
 /*
  * Extends the .visuallyhidden class to allow the element to be focusable
@@ -350,44 +390,21 @@ main {
      * Don't show links for images, or javascript/internal links
      */
 
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
 
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
+.submitButton{
+    background-color: blue;
+    color: white;
+    font-family: sans-serif;
+    padding:10px 10px 10px 10px;
+    font-weight: bold;
+    font-size: 125%;
+}
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+.submitButton:hover{
+    background-color: yellow;
+}
 
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+.gobutton{
+    position: absolute;
 }

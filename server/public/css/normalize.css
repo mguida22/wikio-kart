@@ -11,6 +11,7 @@
 article,
 aside,
 details,
+img,
 figcaption,
 figure,
 footer,
@@ -111,6 +112,7 @@ a:focus {
 a:active,
 a:hover {
     outline: 0;
+    text-decoration: none
 }
 
 /* ==========================================================================

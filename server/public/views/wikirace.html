@@ -32,23 +32,23 @@
 			}
 		</style>
 
-
 		<script src="js/vendor/jquery-1.9.1.min.js"></script>
 		<script src="js/vendor/modernizr-2.7.1.min.js"></script>
 
 
-    <!-- Google Analytics -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	    <!-- Google Analytics -->
+	    <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-67980008-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics -->
+	    ga('create', 'UA-67980008-1', 'auto');
+	    ga('send', 'pageview');
+	    </script>
+	    <!-- End Google Analytics -->
 
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Paytone+One|Josefin+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body class="loading">
         <!--[if lt IE 7]>
@@ -65,20 +65,29 @@
        	<main>
 
 	        <section id="slide-1" class="homeSlide">
-	        	<div class="bcg">
-		        	<div class="hsContainer">
-			    		<div class="hsContent">
-				    		<h2>WIKIO-KART</h2>
+	        	<div class="bcg" >
+			    	<div class="hsContainer">
+			    		<div class="hsContent box2">
+				    		<article><a href="#">Get the Google Chrome Extension</a></article><!-- link to google chrome extension -->
+			    		
 			    		</div>
+		        	</div>
+		        	</div>
 		        	</div>
 	        	</div>
 		    </section>
 
+		   <img src="img/mouse.png" class="mousecar" width="100px">
+
 		    <section id="slide-2" class="homeSlide">
-		    	<div class="bcg">
+		    	<div class="bcg" >
 			    	<div class="hsContainer">
-			    		<div class="hsContent">
-				    		<h2>great for story telling websites.</h2>
+			    		<div class="hsContent box2">
+				    		<h2>How to Play</h2>
+				    		<p>Start at one random Wikipedia page, <br>
+				    		and click your way to the other using <br>
+				    		links on the page. Move as fast as you can- <br>
+				    		<i>we're timing you!</i> </p>
 			    		</div>
 		        	</div>
 		    	</div>
@@ -88,7 +97,7 @@
 				<div class="bcg">
 			    	<div class="hsContainer">
 		    			<div class="hsContent">
-				    		<h2>Now go and create your own story</h2>
+				    		<!-- TEXT GOES HERE -->
 			    		</div>
 			    	</div>
 
@@ -98,14 +107,37 @@
 			<section id="slide-4" class="homeSlide">
 				<div class="bcg">
 			    	<div class="hsContainer">
-		    			<div class="hsContent">
-				    		<h2>and share mine.</h2>
+		    			<div class="hsContent box2">
+				    		<h2>Enter Your Name</h2>
+				    		<form>
+   								 <label for=“name”>Name your Kart</label>
+   										 <br>
+    						<div class="formelement">
+   							 <input type="text" id="kartName">
+   					
+   							 </div>
+   							 <br>
+   							 <!-- <input type="submit" value="submit" id="submit-button" class="submitButton"> -->
+							</form>
 			    		</div>
 			    	</div>
-
+			    	
 			    </div>
 			</section>
-		    <script>
+		    		</main>
+
+		<section id="slide-5" class="homeSlide">
+			<div class="bcg">
+		    	<div class="hsContainer">
+	    			<div class="hsContent">
+			    		<!-- TEXT GOES HERE -->
+		    		</div>
+		    	</div>
+
+		    </div>
+		</section>
+
+		<script>
           $(document).ready(function(){
             $('#submit-button').click(function() {
               var name = $('#name-input').val();
@@ -136,11 +168,20 @@
               });
             });
           });
-			</script>
+		</script>
 
-		<button id="submit-button">Clicky.</button>>
 		</main>
 
+		<section id="slide-6" class="homeSlide">
+				<div class="bcg">
+			    	<div class="hsContainer">
+		    			<div class="hsContent">
+				    		<button class="box" id="submit-button">Click me</button>
+			    		</div>
+			    	</div>
+			    	
+			    </div>
+			</section>
 
         <script src="js/imagesloaded.js"></script>
         <script src="js/skrollr.js"></script>
