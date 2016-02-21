@@ -9,6 +9,18 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
+function generateUrl() {
+  return new Promise((resolve, reject) => {
+    got('https://en.wikipedia.org/wiki/Special:Random').then(response => {
+      let $ = cheerio.load(response.body);
+      let path = $('link[rel="canonical"]').attr('href').trim().replace(/\s/, '_');
+      resolve(path);
+    }).catch(err => {
+      reject(err.response.body);
+    });
+  });
+}
+
 router.post('/user', (req, res) => {
   let name = req.body.name;
   if (!name) {
@@ -32,7 +44,22 @@ router.post('/user', (req, res) => {
     fs.writeFile(path.join(__dirname, '../data/users.json'), data, (err) => {
       if (err) { throw err; }
 
-      res.sendStatus(200);
+      generateUrl().then(startUrl => {
+        generateUrl().then(endUrl => {
+          res.json({
+            userId: id,
+            name: name,
+            startUrl: startUrl,
+            endUrl: endUrl,
+          });
+        }).catch(err => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+      }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+      });
     });
   });
 });
@@ -92,38 +119,9 @@ router.post('/game', (req, res) => {
       fs.writeFile(path.join(__dirname, '../data/highscores.json'), highscores, (err) => {
         if (err) { throw err; }
 
-        res.sendStatus(200);
+        res.redirect(`/highscores?elapsed=${elapsed}`);
       });
     });
-  });
-});
-
-function generateUrl() {
-  return new Promise((resolve, reject) => {
-    got('https://en.wikipedia.org/wiki/Special:Random').then(response => {
-      let $ = cheerio.load(response.body);
-      let path = $('link[rel="canonical"]').attr('href').trim().replace(/\s/, '_');
-      resolve(path);
-    }).catch(err => {
-      reject(err.response.body);
-    });
-  });
-}
-
-router.get('/random', (req, res) => {
-  generateUrl().then(startUrl => {
-    generateUrl().then(endUrl => {
-      res.json({
-        startUrl: startUrl,
-        endUrl: endUrl,
-      });
-    }).catch(err => {
-      console.error(err);
-      res.sendStatus(404);
-    });
-  }).catch(err => {
-    console.error(err);
-    res.sendStatus(404);
   });
 });
 

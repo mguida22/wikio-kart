@@ -10,6 +10,10 @@ const router = express.Router();
 /* GET home page. */
 
 router.get('/', (req, res) => {
+  let elapsed = req.query.elapsed;
+  console.log(req.query);
+  elapsed = moment.utc(Number(elapsed)).format("mm:ss.SS");
+
   fs.readFile(path.join(__dirname, '../data/highscores.json'), (err, data) => {
     if (err) { throw err; }
     data = JSON.parse(data);
@@ -24,7 +28,8 @@ router.get('/', (req, res) => {
     res.render(path.join(__dirname, '../public/views/highscore.handlebars'), {
       layout: false,
       title: 'Highscores',
-      highscores: data
+      highscores: data,
+      time: elapsed
     });
   });
 });
