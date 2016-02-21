@@ -6,13 +6,18 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const exphbs  = require('express-handlebars');
 
 let app = express();
 
 // run in development unless specified
 let env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
-app.locals.ENV_DEVELOPMENT = env === 'development';
+app.locals.ENV_DEVELOPMENT = env == 'development';
+
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+app.enable('view cache');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
@@ -24,14 +29,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-let index = require('./routes/index');
+const index = require('./routes/index');
 app.use('/', index);
 
-let score = require('./routes/score');
-app.use('/score', score);
+const highscore = require('./routes/highscore');
+app.use('/highscore', highscore);
 
 // api routes
-let api = require('./api/routes');
+const api = require('./api/routes');
 app.use('/api', api);
 
 // catch all and send to home page
