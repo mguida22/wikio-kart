@@ -4,8 +4,8 @@ var URLCollection = [];
 
 
  var data = {
-   start: 0,
-   end: 0,
+   startTime: 0,
+   endTime: 0,
    userId: "1234",
    history: []
 }
@@ -13,7 +13,7 @@ var URLCollection = [];
 function startGame () {
 
 
-	data.start = Date.now()												// get system time
+	data.startTime = Date.now()												// get system time
 	URLCollection.length = 0;												// clear array
     console.log("Starting game");
 						
@@ -22,16 +22,16 @@ function startGame () {
 
 function stopGame () {
 
-	data.end = Date.now()	// get system time
+	data.endTime = Date.now()	// get system time
 	console.log("Found it. bro.");
-	console.log(data.end);
-	alert("You found puppies at this time:\n" + data.end);
+	console.log(data.endTime);
+	alert("You found puppies at this time:\n" + data.endTime);
 
 	data.history = URLCollection;
 
 	$.ajax({
 	    type: "POST",
-		url: 'http://localhost:3000/api/game',
+		url: '/api/game',
 	    data: data,
 	    success: function() {
 	      console.log('post success');
