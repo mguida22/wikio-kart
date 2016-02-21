@@ -13,13 +13,14 @@ router.post('/user', (req, res) => {
     res.status(400).json({ error: 'incomplete arguments' });
     return;
   }
+
   // let character = req.body.characterId;
 
   let timestamp = new Date();
   let id = md5(name + timestamp);
 
   fs.readFile(path.join(__dirname, '../data/users.json'), (err, data) => {
-    if (err) throw err;
+    if (err) { throw err; }
 
     data = JSON.parse(data);
 
@@ -30,7 +31,7 @@ router.post('/user', (req, res) => {
 
     data = JSON.stringify(data);
     fs.writeFile(path.join(__dirname, '../data/users.json'), data, (err) => {
-      if (err) throw err;
+      if (err) { throw err; }
 
       res.status(200);
     });
@@ -48,38 +49,57 @@ router.post('/game', (req, res) => {
     return;
   }
 
-  let timestamp = new Date();
-  let gameId = md5(id + timestamp);
+  fs.readFile(path.join(__dirname, '../data/highscores.json'), (err, highscores) => {
+    if (err) { throw err; }
+    fs.readFile(path.join(__dirname, '../data/users.json'), (err, users) => {
+      if (err) { throw err; }
 
-  let elapsed = moment(end - start).format('mm:ss:SS');
+      highscores = JSON.parse(highscores);
+      users = JSON.parse(users);
 
-  // save game data here
-  fs.readFile(path.join(__dirname, '../data/games.json'), (err, data) => {
-    if (err) throw err;
+      let highscoreId = md5(history[0] + history[history.length - 1]);
+      let elapsed = end - start;
 
-    data = JSON.parse(data);
+      let name = users[id].name;
 
-    if(!data[id]) {
-      data[id] = {};
-    }
+      let data = {
+        time: elapsed,
+        id: id,
+        name: name,
+      };
 
-    data[id][gameId] = {
-      start: start,
-      end: end,
-      time: elapsed,
-      history: history
-    };
+      if (highscores[highscoreId]) {
+        // place in array sorted by time (low to high)
+        let prevIndex = 0;
+        let scores = highscores[highscoreId].scores;
+        for (let i = 0; i < scores.length; i++) {
+          if (scores[i].time > elapsed) {
+            scores.splice(prevIndex, 0, data);
+            break;
+          } else if (scores[i].name === name) {
+            break;
+          }
+          prevIndex = i;
+        }
+      } else {
+        highscores[highscoreId] = {
+          startPage: history[0],
+          endPage: history[history.length - 1],
+          scores: [data]
+        };
+      }
 
-    data = JSON.stringify(data);
-    fs.writeFile(path.join(__dirname, '../data/games.json'), data, (err) => {
-      if (err) throw err;
+      highscores = JSON.stringify(highscores);
+      fs.writeFile(path.join(__dirname, '../data/highscores.json'), highscores, (err) => {
+        if (err) { throw err; }
 
-      res.status(200);
+        res.status(200);
+      });
     });
   });
 });
 
-router.use(function(req, res, next) {
+router.use((req, res) => {
   res.status(404).send('Sorry cant find that!');
 });
 

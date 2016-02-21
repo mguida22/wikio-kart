@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -12,7 +12,7 @@ let app = express();
 // run in development unless specified
 let env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
-app.locals.ENV_DEVELOPMENT = env == 'development';
+app.locals.ENV_DEVELOPMENT = env === 'development';
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
@@ -45,7 +45,7 @@ app.all('*', (req, res) => {
 // will print stacktrace
 
 if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
+  app.use((err, req, res) => {
     let response = {
       message: err.message,
       error: err,
@@ -58,7 +58,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   let response = {
     message: err.message,
     error: {},

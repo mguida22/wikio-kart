@@ -2,13 +2,13 @@
 
 mkdir data/
 cd data/
-touch games.json
 touch users.json
+touch highscores.json
 
 if [[ ! -s 'users.json' ]] ; then
   echo "{}" > 'users.json'
 fi
 
-if [[ ! -s 'games.json' ]] ; then
-  echo "{}" > 'games.json'
+if [[ ! -s 'highscores.json' ]] ; then
+  echo "{}" > 'highscores.json'
 fi
