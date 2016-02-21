@@ -1,20 +1,40 @@
 'use strict';
 
+const md5 = require('md5');
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const router = express.Router();
-
-/* GET users listing. */
-// router.get('/hi', (req, res) => {
-//   res.send('respond with a resource');
-// });
 
 router.post('/user', (req, res) => {
   let name = req.body.name;
   let character = req.body.characterId;
 
-  // send back id
+  let timestamp = new Date();
+  let id = md5(name + timestamp);
 
-  res.status(200);
+  fs.readFile(path.join(__dirname, '../data/users.json'), (err, data) => {
+    if (err) throw err;
+
+    if (data.length === 0) {
+      data = [];
+    } else {
+      data = JSON.parse(data);
+    }
+
+    data.push({
+      name: name,
+      characterId: character,
+      id: id
+    });
+
+    data = JSON.stringify(data);
+    fs.writeFile(path.join(__dirname, '../data/users.json'), data, (err) => {
+      if (err) throw err;
+
+      res.status(200);
+    });
+  });
 });
 
 router.post('/game', (req, res) => {
