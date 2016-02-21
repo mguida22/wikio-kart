@@ -102,7 +102,6 @@ h2 {
 }
 
 section {
-	min-width: 960px;
 	opacity: 0;
 }
 .loaded section,
@@ -185,7 +184,6 @@ main {
     padding: 10px 10px 10px 10px;
 }
 
-
 .mousecar{
     position: fixed;
     top: 475px;
@@ -229,7 +227,7 @@ main {
 	}
 
 /* Slide 4 */
-#slide-4 .bcg {background-color: blue}
+#slide-4 .bcg {background-image: url('../img/bcg_slide-4.jpg')}
 #slide-4 .hsContent {
 	margin-left: 250px;
     z-index: auto;
@@ -247,13 +245,15 @@ main {
     
 #slide-5 .bcg {background-image:url('../img/bcg_slide-5.jpg')}
 #slide-5 .hsContent {
-    margin-left: -239px;
+    margin-left: 250px;
+    color: #ffffff;
 }
  
 /* Slide 6 */
-#slide-6 .bcg {background-color: #39b54a}
+#slide-6 .bcg {background-image:url('../img/bcg_slide-6.jpg')}
 #slide-6 .hsContent {
-    margin-left: -239px;
+    margin-left: -400px;
+    color: #ffffff;
 }
     
 
@@ -406,5 +406,16 @@ main {
 }
 
 .gobutton{
-    position: absolute;
+    left: 500px;
+    top:500px;
+
+}
+
+.extensionlink{
+    display: block;
+    margin:0 auto;
+    width:250px;
+    border: 1px white;
+    top: 50%;
+    position: relative;
 }
