@@ -87,7 +87,19 @@
 			    	
 			    </div>
 			</section>
-		    
+		    <script>
+				var go = function() {
+				    console.log("button");
+				    var extensionID = "dookpljdhbelnhekoanbkgahcioialmn";
+
+					// Make a simple request:
+					chrome.runtime.sendMessage(extensionID, {action: "startGame"},
+					  function(response) {
+					      console.log(response.farewell);
+  					});
+				}
+			</script>
+<a href="javascript:go();">Click me</a>
 		</main>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

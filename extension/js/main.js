@@ -33,7 +33,7 @@ function stopGame () {
 
 	$.ajax({
 	    type: "POST",
-		url: 'https://93a0b518.ngrok.io/api/game/',
+		url: 'https://f40f985f.ngrok.io',
 	    data: data,
 	    success: function() {
 	      console.log('post success');
@@ -53,23 +53,32 @@ function catchURL () {
 }
 
 
-$(function() {
+// $(function() {						// Every page load
 
-	catchURL();
-	if (window.location.href == "https://en.wikipedia.org/wiki/"+stopPage) {
-		stopGame();
-	}
+// 	catchURL();
+// 	if (window.location.href == "https://en.wikipedia.org/wiki/"+stopPage) {
+// 		stopGame();
+// 	}
 
-});
+// });
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
-	console.log("request!", request);
+// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
+// 	console.log("request!", request);
 
-  if (request.action == "startGame") {
-    console.log("Content script received: ", request);
-    startGame();
-  }
-});
+//   if (request.action == "startGame") {
+//     console.log("Content script received: ", request);
+//     startGame();
+//   }
+// });
+
+chrome.runtime.onMessageExternal.addListener (
+  function(request, sender, sendResponse) {
+    	if(request.action == "startGame") {
+    		startGame(); 
+    		console.log("that actually worked!");
+            sendResponse({farewell: "goodbye"});
+    	}
+  });
 
 
 console.log("LOADED!");
