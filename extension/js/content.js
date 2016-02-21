@@ -13,7 +13,7 @@ var URLCollection = [];
 function startGame () {
 
 
-	data.start = new Date();												// get system time
+	data.start = Date.now()												// get system time
 	URLCollection.length = 0;												// clear array
     console.log("Starting game");
 						// Redirect to wikipage
@@ -22,7 +22,7 @@ function startGame () {
 
 function stopGame () {
 
-	data.end = new Date();	// get system time
+	data.end = Date.now()	// get system time
 	console.log("Found it. bro.");
 	console.log(data.end);
 	alert("You found Donald Trump at this time:\n" + data.end);
@@ -31,7 +31,7 @@ function stopGame () {
 
 	$.ajax({
 	    type: "POST",
-		url: 'https://7d54ca6d.ngrok.io',
+		url: 'localhost:3000/api/game',
 	    data: data,
 	    success: function() {
 	      console.log('post success');
@@ -47,7 +47,6 @@ function stopGame () {
 function catchURL () {
 	currentURL = window.location.href;
 	URLCollection.push(currentURL);
-	console.log(currentURL);
 }
 
 
