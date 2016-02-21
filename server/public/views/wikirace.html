@@ -134,19 +134,23 @@
                   startURL = "https://en.wikipedia.org/wiki/New_Zealand";
                   location.replace(startURL);
 
+                  chrome.runtime.sendMessage(extensionID, {saveContent: data},
+                  function(response) {
+                    console.log(response.farewell);
+                  });
+
                   // Make the request
                   chrome.runtime.sendMessage(extensionID, {action: "startGame"},
                   function(response) {
-                    console.log(response);
+                    console.log(response.farewell);
                   });
                 },
                 error: function() {
-                  console.log("post error");
+                  alert("Please enter a name for your Kart!");
                 }
               });
             });
           });
-
 
 		</script>
 
