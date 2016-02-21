@@ -1,7 +1,6 @@
 'use strict';
 
 const md5 = require('md5');
-const moment = require('moment');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -10,30 +9,27 @@ const router = express.Router();
 router.post('/user', (req, res) => {
   let name = req.body.name;
   if (!name) {
-    res.status(400).json({ error: 'incomplete arguments' });
+    res.sendStatus(400);
+    console.error('incomplete arguments for POST /api/user');
     return;
   }
-
-  // let character = req.body.characterId;
 
   let timestamp = new Date();
   let id = md5(name + timestamp);
 
   fs.readFile(path.join(__dirname, '../data/users.json'), (err, data) => {
     if (err) { throw err; }
-
     data = JSON.parse(data);
 
     data[id] = {
-      name: name,
-      // characterId: character,
+      name: name
     };
 
     data = JSON.stringify(data);
     fs.writeFile(path.join(__dirname, '../data/users.json'), data, (err) => {
       if (err) { throw err; }
 
-      res.status(200);
+      res.sendStatus(200);
     });
   });
 });
@@ -93,14 +89,14 @@ router.post('/game', (req, res) => {
       fs.writeFile(path.join(__dirname, '../data/highscores.json'), highscores, (err) => {
         if (err) { throw err; }
 
-        res.status(200);
+        res.sendStatus(200);
       });
     });
   });
 });
 
 router.use((req, res) => {
-  res.status(404).send('Sorry cant find that!');
+  res.sendStatus(404).send('Sorry cant find that!');
 });
 
 module.exports = router;
