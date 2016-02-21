@@ -115,47 +115,6 @@
 		    </div>
 		</section>
 
-		<script>
-          $(document).ready(function(){
-            $('#submit-button').click(function() {
-              var name = $('#kartName').val();
-              var data = {
-                name: name
-              };
-
-              $.ajax({
-                type: "POST",
-                url: '/api/user',
-                data: data,
-                success: function(dataResponse) {
-                  // probably need this to parse the json from server
-                  dataResponse = JSON.parse(dataResponse);
-                  console.log('post success');
-                  var extensionID = "dookpljdhbelnhekoanbkgahcioialmn";
-
-                  location.replace(dataResponse.startUrl);
-
-                  chrome.runtime.sendMessage(extensionID, {saveContent: dataResponse},
-                    function(response) {
-                      console.log(response.farewell);
-                  });
-
-                  // probably dont need because of above message ^
-                  // Make the request
-                  // chrome.runtime.sendMessage(extensionID, {action: "startGame"},
-                  //   function(response) {
-                  //     console.log(response.farewell);
-                  // });
-                },
-                error: function() {
-                  alert("Please enter a name for your Kart!");
-                }
-              });
-            });
-          });
-
-		</script>
-
 		</main>
 
 		<section id="slide-6" class="homeSlide">
@@ -185,6 +144,47 @@
 			    	</div>
 
 			</section>
+
+      <script>
+            $(document).ready(function(){
+              $('#submit-button').click(function() {
+                var name = $('#kartName').val();
+                var data = {
+                  name: name
+                };
+
+                $.ajax({
+                  type: "POST",
+                  url: '/api/user',
+                  data: data,
+                  success: function(dataResponse) {
+                    // probably need this to parse the json from server
+                    dataResponse = JSON.parse(dataResponse);
+                    console.log('post success');
+                    var extensionID = "dfmgjlfnhflocfegladlodgonfgeclof";
+
+                    location.replace(dataResponse.startUrl);
+
+                    chrome.runtime.sendMessage(extensionID, {saveContent: dataResponse},
+                      function(response) {
+                        console.log(response.farewell);
+                    });
+
+                    // probably dont need because of above message ^
+                    // Make the request
+                    // chrome.runtime.sendMessage(extensionID, {action: "startGame"},
+                    //   function(response) {
+                    //     console.log(response.farewell);
+                    // });
+                  },
+                  error: function() {
+                    alert("Please enter a name for your Kart!");
+                  }
+                });
+              });
+            });
+
+  		</script>
 
         <script src="js/imagesloaded.js"></script>
         <script src="js/skrollr.js"></script>
