@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "WikiRaces",
+  "name": "Wikio-Kart",
   "description": "Race your friends in the most competitive wikipedia event of the century!",
   "version": "0.0.1",
 
@@ -21,11 +21,11 @@
 
   "browser_action": {
     "default_popup": "popup.html",
-    "default_title": "WikiRaces"
+    "default_title": "Wikio-Kart"
   },
 
   "externally_connectable": {
-  "matches": ["http://localhost:3000/*"]
+    "matches": ["http://localhost:3000/*", "https://wikiokart.com/*"]
   },
 
   "permissions": [
@@ -33,7 +33,6 @@
     "storage",
     "webNavigation",
     "tabs",
-    "http://*/*", 
+    "http://*/*",
     "https://*/*"]
 }
-
