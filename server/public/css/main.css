@@ -25,15 +25,7 @@ body {
  * Customize the background color to match your design.
  */
 
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
 
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
 
 /*
  * A better looking default horizontal rule
@@ -146,7 +138,6 @@ main {
 .hsContent {
 	max-width: 700px;
 	position: absolute;
-	left: 50%;
 	top: 50%;
     margin:0 auto;
 }
@@ -157,10 +148,10 @@ main {
 		/*font-size: 35px;*/
 		/*line-height: 38px;*/
 		/*margin-bottom: 12px;*/
-	}
+	/*}*/
 	.hsContent p {
 		width: 400px;
-		color: black;
+		color: white;
 	}
 	.hsContent a {
 		color: #ffffff;
@@ -207,7 +198,6 @@ main {
 /* Slide 2 */
 #slide-2 .bcg { background-image:url('../img/bcg_slide-2.jpg')}
 #slide-2 .hsContent {
-	margin-left: -450px;
 	bottom: 300px;
 	top: auto;
     color: #ffffff;
@@ -243,19 +233,35 @@ main {
 	}
 
     
-#slide-5 .bcg {background-image:url('../img/bcg_slide-5.jpg')}
+#slide-5 .bcg {background-image:url('../img/bcg_slide-5.jpg');}
 #slide-5 .hsContent {
     margin-left: 250px;
     color: #ffffff;
 }
  
 /* Slide 6 */
-#slide-6 .bcg {background-image:url('../img/bcg_slide-6.jpg')}
+#slide-6 .bcg {
+    background-image:url('../img/bcg_slide-6.jpg');}
 #slide-6 .hsContent {
-    margin-left: -400px;
-    color: #ffffff;
+    /*margin-left: -400px;
+    /*color: #ffffff;
+    position: relative*/
+    display: block;
+    margin: 0 auto;
+    top:100px;
+    position: relative;
+    overflow: hidden;
+
+
+
 }
     
+
+.pleasecenter{
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
 
 /* ==========================================================================
    Helper classes
@@ -339,9 +345,7 @@ main {
  * Include this rule to trigger hasLayout and contain floats.
  */
 
-.clearfix {
-    *zoom: 1;
-}
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -349,46 +353,9 @@ main {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
 
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
 
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
-   ========================================================================== */
 
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
 
 
 
@@ -405,17 +372,60 @@ main {
     background-color: yellow;
 }
 
-.gobutton{
-    left: 500px;
-    top:500px;
 
-}
+
 
 .extensionlink{
+    top: 50px;
+    font-family: Josephin Sans, sans-serif;
+    position: fixed;
     display: block;
-    margin:0 auto;
-    width:250px;
-    border: 1px white;
-    top: 50%;
-    position: relative;
+    /* margin: 0 auto; */
+    left: 50vw;
+    transform: translate(-59%,0);
+    background: #624391;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: all .25s ease-in-out;
+}
+
+.extensionlink a{
+    color: #fdfdfd;
+    text-decoration: none;
+}
+
+.extensionlink:hover{
+    background: white;
+}
+
+.extensionlink:hover a{
+    color: #1b8fc8;
+}
+.gobutton{
+    border: 1px solid rgba(255,255,255,1);
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 5px;
+    top: 50vh;
+    padding: 10px 10px 10px 10px;
+    left: 60vw;
+    position:relative;
+    
+}
+
+.flex{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 35px;
+}
+
+button{
+    background: rgba(255,255,255,.4);
+    border: none;
+    border-radius: 11px;
+    transition:all .25s ease-in-out;
+}
+
+button:hover{
+    background: transparent;
 }
