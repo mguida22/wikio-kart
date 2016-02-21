@@ -23,10 +23,15 @@
 	dispay:none;
 }
 
+.front{
+	z-index: 100;
+}
+
 *{ margin: 0; padding: 0;}
 
 body{
 	overflow: hidden;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 #clouds{
@@ -35,6 +40,7 @@ body{
 	background: -webkit-linear-gradient(top, #bedafc 0%, #fff 100%);
 	background: -linear-gradient(top, #bedafc 0%, #fff 100%);
 	background: -moz-linear-gradient(top, #bedafc 0%, #fff 100%);
+	z-index: -1;
 }
 
 .cloud{
@@ -154,4 +160,17 @@ body{
 @-o-keyframes moveclouds{
 	0%{margin-left: 1000px;}
 	100%{margin-left: -1000px;}
+}
+
+.congrats{
+	width: 300px;
+	margin:0 auto;
+}
+
+h1{
+	font-size: 2.5em;
+}
+
+p{
+	font-size: 1.0em;
 }
