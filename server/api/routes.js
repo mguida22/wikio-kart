@@ -1,6 +1,9 @@
 'use strict';
 
 const md5 = require('md5');
+const got = require('got');
+const cheerio = require('cheerio');
+const Promise = require("bluebird");
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -92,6 +95,35 @@ router.post('/game', (req, res) => {
         res.sendStatus(200);
       });
     });
+  });
+});
+
+function generateUrl() {
+  return new Promise((resolve, reject) => {
+    got('https://en.wikipedia.org/wiki/Special:Random').then(response => {
+      let $ = cheerio.load(response.body);
+      let path = $('link[rel="canonical"]').attr('href').trim().replace(/\s/, '_');
+      resolve(path);
+    }).catch(err => {
+      reject(err.response.body);
+    });
+  });
+}
+
+router.get('/random', (req, res) => {
+  generateUrl().then(startUrl => {
+    generateUrl().then(endUrl => {
+      res.json({
+        startUrl: startUrl,
+        endUrl: endUrl,
+      });
+    }).catch(err => {
+      console.error(err);
+      res.sendStatus(404);
+    });
+  }).catch(err => {
+    console.error(err);
+    res.sendStatus(404);
   });
 });
 
