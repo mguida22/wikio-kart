@@ -1,6 +1,6 @@
 
-*, 
-*:before, 
+*,
+*:before,
 *:after {
     margin: 0;
     padding: 0;
@@ -17,6 +17,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*
@@ -192,7 +193,7 @@ main {
     font-family: Josephin Sans, sans-serif;
     position: absolute;
     display: block;
-    
+
 }
 
 /* Slide 2 */
@@ -223,7 +224,7 @@ main {
     z-index: auto;
     color: #ffffff;
     font-family: sans-serif;
-   
+
 }
 	#slide-4 h2 {
 		background: none;
@@ -232,13 +233,13 @@ main {
 
 	}
 
-    
+
 #slide-5 .bcg {background-image:url('../img/bcg_slide-5.jpg');}
 #slide-5 .hsContent {
     margin-left: 250px;
     color: #ffffff;
 }
- 
+
 /* Slide 6 */
 #slide-6 .bcg {
     background-image:url('../img/bcg_slide-6.jpg');}
@@ -255,7 +256,7 @@ main {
 
 
 }
-    
+
 
 .pleasecenter{
     margin:0 auto;
@@ -410,7 +411,7 @@ main {
     padding: 10px 10px 10px 10px;
     left: 60vw;
     position:relative;
-    
+
 }
 
 .flex{
