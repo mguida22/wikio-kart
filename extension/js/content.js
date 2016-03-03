@@ -10,11 +10,12 @@ var data = {
 }
 
 function startGame(course) {
-  startPage = course.startPage;
-  stopPage = course.stopPage;
-	data.startTime = Date.now();												// get system time
-	URLCollection.length = 0;												// clear array
+  startPage = course.startUrl;
+  stopPage = course.endUrl;
+	data.startTime = Date.now();
+	URLCollection.length = 0;
   console.log("Starting game");
+  window.location.href = startPage;
 }
 
 function stopGame() {
@@ -54,11 +55,10 @@ $(function() {						// Every page load
 });
 
 
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log("Recieved Request from background")
-    if (request.action) {
-      startGame(request.action.course);
-    }
-    sendResponse({errorMsg: "goodbye"});
-  });
+chrome.runtime.onMessage.addListener(function(request) {
+  console.log("Recieved Request from background");
+  if (request.action) {
+    startGame(request.action);
+  }
+  sendResponse({errorMsg: "goodbye"});
+});

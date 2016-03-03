@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.enable('view cache');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true

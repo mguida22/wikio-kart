@@ -1,5 +1,5 @@
-*, 
-*:before, 
+*,
+*:before,
 *:after {
 	margin: 0;
 	padding: 0;
@@ -65,7 +65,7 @@ body{
 	border-radius: 100px;
 	-moz-border-radius: 100px;
 	-webkit-border-radius: 100px;
-	
+
 	-webkit-transform: rotate(30deg);
 	transform: rotate(30deg);
 	-moz-transform: rotate(30deg);
