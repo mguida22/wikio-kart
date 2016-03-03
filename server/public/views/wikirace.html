@@ -126,49 +126,39 @@
 
 <script>
   $(document).ready(function(){
-    $('#submit-button-donald').click(function() { sendData(); });
-    $('#submit-button-platy').click(function() { sendData(); });
-    $('#submit-button-random').click(function() { sendData(); });
+    $('#submit-button-donald').click(function(evt) { sendData(evt); });
+    $('#submit-button-platy').click(function(evt) { sendData(evt); });
+    $('#submit-button-random').click(function(evt) { sendData(evt); });
 
-    var sendData = function() {
-      var n = $('#kartName').val();
-      var settings = {
-        method: "POST",
-        url: '/api/user',
-        data: {
-          name: n
-        },
-        async: true,
-        headers: {
-          'content-type': "application/json",
-        },
-        processData: false
+    var sendData = function(evt) {
+      evt.preventDefault();
+
+      var name = $('#kartName').val();
+
+      if (!name) {
+        alert('Please enter a name for your kart!');
+        return;
+      }
+
+      var data = {
+        name: name
       };
 
-      $.ajax(settings).done(function(dataResponse) {
-        console.log(dataResponse);
-        // probably need this to parse the json from server
-        // dataResponse = JSON.parse(dataResponse);
-        // console.log('post success');
-        // var extensionID = "dfmgjlfnhflocfegladlodgonfgeclof";
-        //
-        // location.replace(dataResponse.startUrl);
-        //
-        // chrome.runtime.sendMessage(extensionID, {saveContent: dataResponse}, function(response) {
-        //   console.log(response.farewell);
-        // });
+      $.ajax({
+        type: "POST",
+        url: '/api/user',
+        data: data,
+        success: function(res) {
+          var extensionID = "dfmgjlfnhflocfegladlodgonfgeclof";
 
-        // probably dont need because of above message ^
-        // Make the request
-        // chrome.runtime.sendMessage(extensionID, {action: "startGame"},
-        //   function(response) {
-        //     console.log(response.farewell);
-        // });
+          chrome.runtime.sendMessage(extensionID, {saveContent: res}, function(response) {
+            console.log(response.farewell);
+          });
+        },
+        error: function(err) {
+          console.log(err)
+        }
       });
-      //   error: function() {
-      //     alert("Please enter a name for your Kart!");
-      //   }
-      // });
     }
   });
 </script>
